@@ -1,0 +1,28 @@
+#ifndef AUDIOPLAYER_H
+#define AUDIOPLAYER_H
+
+#include <QObject>
+
+class QMediaPlayer;
+
+enum SoundType
+{
+	TowerPlaceSound,		// 放置箭塔
+    LifeLoseSound,			// 萝卜掉血
+    LaserShootSound,		// 打中怪兽
+    EnemyDestorySound		// 怪物死亡
+};
+
+class AudioPlayer : public QObject
+{
+public:
+	explicit AudioPlayer(QObject *parent = 0);
+	void startBGM();
+	void playSound(SoundType soundType);
+    void endBGM();
+private:
+	QMediaPlayer *m_backgroundMusic; // 背景音乐
+};
+
+
+#endif 
